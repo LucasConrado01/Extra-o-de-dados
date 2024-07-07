@@ -10,7 +10,7 @@ import time
 import numpy as np
 import requests
 
-# Primeira parte do código - Iremos encontrar as empresas que queremos trabalhar de um determinado setor, para isso, usamos as palavras chaves.
+### Primeira parte do código - Iremos encontrar as empresas que queremos trabalhar de um determinado setor, para isso, usamos as palavras chaves.
 
 link = 'https://dados.cvm.gov.br/dados/CIA_ABERTA/CAD/DADOS/cad_cia_aberta.csv'
 
@@ -23,7 +23,7 @@ for i in codigo_fonte.text.split('\n'):
 
 tabela = pd.DataFrame(linhas[1:], columns = linhas[0])
 
-# Webscrapping da tabela gerada
+### Webscrapping da tabela gerada
 
 searchfor = ['AZUL','AÉREO']   #Palavras-chaves para o filtro que será utilizado na tabela
 empresa_buscada = tabela[tabela.DENOM_SOCIAL.str.contains('|'.join(searchfor), na = False)]
@@ -32,7 +32,7 @@ lista_cnpj = ['09.305.994/0001-29']
 empresa_buscada_cnpj = tabela[tabela['CNPJ_CIA'].isin(lista_cnpj)]
 empresas = list(empresa_buscada_cnpj['CD_CVM'])
 
-## Segunda parte do código - Usada para pegar os resultados Tri/Anual das empresas selecionadas acima.
+### Segunda parte do código - Usada para pegar os resultados Tri/Anual das empresas selecionadas acima.
 
 start_time = time.time()
 a = 0
